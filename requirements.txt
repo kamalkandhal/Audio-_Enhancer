@@ -1,0 +1,15 @@
+flask
+gunicorn
+tensorflow==2.18.0
+keras==3.7.0
+numpy
+librosa
+soundfile
+scipy
+matplotlib
+pesq==0.0.4
+
+pystoi
+scikit-learn
+# pypesq==1.2.4
+

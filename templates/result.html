@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ClariFi - Enhancement Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header class="header">
+    <h1>🎧 ClariFi: Enhancement Result</h1>
+    <p>Listen to the before and after – powered by Deep Learning.</p>
+  </header>
+
+  <section class="results">
+    <div class="audio-comparison">
+      <div class="audio-block">
+        <h2>🔉 Original Audio</h2>
+        <audio controls>
+          <source src="{{ original_file }}" type="audio/wav">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+
+      <div class="audio-block">
+        <h2>🔊 Enhanced Audio</h2>
+        <audio controls>
+          <source src="{{ enhanced_file }}" type="audio/wav">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+    </div>
+
+    {% if pesq_score %}
+    <p><strong>🎯 PESQ Score:</strong> {{ pesq_score }}</p>
+    {% endif %}
+
+    <a href="{{ enhanced_file }}" download class="btn">⬇️ Download Enhanced Audio</a>
+    <a href="{{ url_for('index') }}" class="btn-secondary">🔁 Try Another</a>
+  </section>
+
+  <footer class="footer">
+    <p>Author : Kamal Kandhal</p>
+  </footer>
+
+  <style>
+    .audio-comparison {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .audio-block {
+      background-color: #f9f9f9;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    @media(min-width: 768px) {
+      .audio-comparison {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .audio-block {
+        flex: 1;
+        margin: 0 1rem;
+      }
+    }
+  </style>
+
+</body>
+</html>
